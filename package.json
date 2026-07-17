@@ -1,0 +1,13 @@
+{
+  "name": "arctic-wisps",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Public health-checked wisp endpoint list for arctic's static build",
+  "scripts": {
+    "check": "node health-check.mjs"
+  },
+  "dependencies": {
+    "ws": "^8.21.1"
+  }
+}

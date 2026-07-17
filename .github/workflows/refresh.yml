@@ -1,0 +1,35 @@
+name: refresh wisp list
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-wisps
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: node health-check.mjs
+      - name: commit changes
+        run: |
+          if git diff --quiet -- wisp.txt; then
+            echo "no change"
+            exit 0
+          fi
+          git config user.name "arctic-wisps bot"
+          git config user.email "actions@github.com"
+          git add wisp.txt
+          git commit -m "chore: refresh wisp.txt ($(grep -c 'wss://' wisp.txt) live)"
+          git push
