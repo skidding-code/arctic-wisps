@@ -1,3 +1,6 @@
+wss://arctic.lat/wisp/
+wss://v2.quest/cdn-cgi/p/
+wss://fern.best/wisp/
 wss://math.2805hammandrive.shop/cdn-cgi/p/
 wss://math.akanesucks.cfd/cdn-cgi/p/
 wss://math.bellschedule.lol/cdn-cgi/p/
